@@ -1,0 +1,37 @@
+{% load staticfiles %}
+<html>
+<head>
+   <link rel="stylesheet" href="{% static "css/semantic.css" %}">
+   <script src="{% static "js/jquery.min.js" %}"></script>
+   <script src="{% static "js/semantic.js" %}"></script>
+</head>
+<body>
+
+<div class="ui button primary" id="incbtn">Increase</div>
+<div class="ui button primary" id="resetbtn">Reset</div>
+<div class="ui teal progress" id="progbar">
+   <div class="bar"></div>
+   <div class="label">0% complete</div>
+</div>
+
+<script>
+   $(document).ready(function(){
+      $('#progbar').progress({
+         text: { 
+            active: '{percent}% complete',
+            success: '100% complete'
+         },
+         total: 5
+      });
+            
+      $('#incbtn').on('click', function(){
+         $('#progbar').progress('increment');
+      });
+      $('#resetbtn').on('click', function(){
+         $('#progbar').progress('reset');
+      });
+   });
+</script>
+
+</body>
+</html>

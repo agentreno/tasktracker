@@ -1,0 +1,78 @@
+{% load staticfiles %}
+<html>
+<head>
+   <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+   <link rel="stylesheet" href="{% static "css/site.css" %}">
+   <script src="{% static "js/jquery.min.js" %}"></script>
+   <script src="{% static "js/bootstrap.min.js" %}"></script>
+   <script src="{% static "js/site.js" %}"></script>
+</head>
+<body>
+<div class="container">
+   <div class="jumbotron">
+      <h1>Task Tracker</h1>
+      <div class="btn btn-primary btn-lg" data-toggle="modal"
+         data-target="#addtaskmodal">Add New Task</div>
+   </div>
+
+   {% if tasks %}
+   {% for task in tasks %}
+      <div class="well well-sm">
+         <h3>{{ task.name }}</h3>
+         <p>{{ task.description }}</p>
+         <button class="btn btn-success incbtn">Done</button>
+         <button class="btn btn-warning resetbtn">Reset</button>
+         <button class="btn btn-danger deletebtn">Delete Task</button>
+         <p></p>
+         <div class="progress">
+            <div class="progress-bar progress-bar-success progress-bar-striped active"
+               role="progressbar" 
+               aria-valuenow="{{ task.count_progress_this_week }}"
+               aria-valuemin="0" 
+               aria-valuemax="{{ task.weeklyfreq }}"
+               style="min-width: 2em; width: 0%">
+               0%
+            </div>
+         </div>
+      </div>
+   {% endfor %}
+   {% endif %}
+
+   <div class="modal fade" id="addtaskmodal" tabindex="-1" role="dialog"
+      aria-labelledby="addtasklabel" aria-hidden="true">
+      <div class="modal-dialog">
+         <div class="modal-content">
+            <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span></button>
+               <h4 class="addtasklabel">Add New Task</h4>
+            </div>
+            <div class="modal-body">
+               <form role="form" oninput="freq.value=taskfreq.value" 
+                  action="addTask" method="post">
+                  {% csrf_token %}
+                  <div class="form-group">
+                     <label for="taskname">Task Name</label>
+                     <input type="text" class="form-control" id="taskname" name="taskname">
+                  </div>
+                  <div class="form-group">
+                     <label for="taskdesc">Task Description</label>
+                     <input type="text" class="form-control" id="taskdesc" name="taskdesc">
+                  </div>
+                  <div class="form-group">
+                     <label for="taskfreq">
+                        Target weekly frequency: 
+                        <output name="freq" for="taskfreq">0</output>
+                     </label>
+                     <input type="range" value="0" min="0" max="10" id="taskfreq"
+                        name="taskfreq">
+                  </div>
+                  <button class="btn btn-default addtaskbtn" data-dismiss="modal">Submit</button>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+</body>
+</html>
