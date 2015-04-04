@@ -9,7 +9,7 @@ class Task(models.Model):
    weeklyfreq = models.IntegerField()
 
    def _count_progress_this_week(self):
-      return len([p for p in Progress.objects.filter(task=self.id) if p.done_this_week])
+      return len([p for p in Progress.objects.filter(task=self.id) if p.done_this_week()])
    count_progress_this_week = property(_count_progress_this_week)
 
 class Progress(models.Model):
