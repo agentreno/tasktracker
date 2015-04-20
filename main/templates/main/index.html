@@ -14,29 +14,33 @@
       <div class="btn btn-primary btn-lg" data-toggle="modal"
          data-target="#addtaskmodal">Add New Task</div>
    </div>
-
+   
+   <div class="row">
    {% if tasks %}
    {% for task in tasks %}
-      <div class="well well-sm">
-         <h3>{{ task.name }}</h3>
-         <p>{{ task.description }}</p>
-         <button class="btn btn-success incbtn">Done</button>
-         <button class="btn btn-warning resetbtn">Reset</button>
-         <button class="btn btn-danger deletebtn">Delete Task</button>
-         <p></p>
-         <div class="progress">
-            <div class="progress-bar progress-bar-success progress-bar-striped active"
-               role="progressbar" 
-               aria-valuenow="{{ task.count_progress_this_week }}"
-               aria-valuemin="0" 
-               aria-valuemax="{{ task.weeklyfreq }}"
-               style="min-width: 2em; width: 0%">
-               0%
+      <div class="col-md-4 col-sm-6">
+         <div class="well well-sm">
+            <h3>{{ task.name }}</h3>
+            <p>{{ task.description }}</p>
+            <button class="btn btn-success incbtn">Done</button>
+            <button class="btn btn-warning resetbtn">Reset</button>
+            <button class="btn btn-danger deletebtn">Delete Task</button>
+            <p></p>
+            <div class="progress">
+               <div class="progress-bar progress-bar-success progress-bar-striped active"
+                  role="progressbar" 
+                  aria-valuenow="{{ task.count_progress_this_week }}"
+                  aria-valuemin="0" 
+                  aria-valuemax="{{ task.weeklyfreq }}"
+                  style="min-width: 2em; width: 0%">
+                  0%
+               </div>
             </div>
          </div>
       </div>
    {% endfor %}
    {% endif %}
+   </div>
 
    <div class="modal fade" id="addtaskmodal" tabindex="-1" role="dialog"
       aria-labelledby="addtasklabel" aria-hidden="true">
