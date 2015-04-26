@@ -7,7 +7,6 @@
    <script src="{% static "js/bootstrap.min.js" %}"></script>
    <script src="{% static "js/site.js" %}"></script>
    <script src="{% static "js/backbone-min.js" %}"></script>
-   <script src="{% static "js/app.js" %}"></script>
 </head>
 <body>
 <div class="container">
@@ -16,7 +15,8 @@
       <div class="btn btn-primary btn-lg" data-toggle="modal"
          data-target="#addtaskmodal">Add New Task</div>
    </div>
-   
+
+{% comment %}   
    <div class="row">
    {% if tasks %}
    {% for task in tasks %}
@@ -42,6 +42,9 @@
       </div>
    {% endfor %}
    {% endif %}
+   </div>
+{% endcomment %}
+   <div id="taskspace">
    </div>
 
    <div class="modal fade" id="addtaskmodal" tabindex="-1" role="dialog"
@@ -80,5 +83,6 @@
       </div>
    </div>
 </div>
+<script src="{% static "js/app.js" %}"></script>
 </body>
 </html>
