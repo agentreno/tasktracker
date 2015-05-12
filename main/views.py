@@ -8,6 +8,9 @@ def index(request):
    context = { 'tasks' : tasks }
    return render(request, 'main/index.html', context)
 
+def test(request):
+   return render(request, 'main/test.html')
+
 def addTask(request):
    name = request.GET['taskname']
    desc = request.GET['taskdesc']

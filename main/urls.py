@@ -3,6 +3,7 @@ from main import views
 
 urlpatterns = [
    url(r'^$', views.index),
+   url(r'^test.html', views.test),
    url(r'^addTask$', views.addTask),
    url(r'^deleteTask', views.deleteTask),
    url(r'^incProgress', views.incProgress),
