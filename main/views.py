@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.http import HttpResponse
 from main.models import Task, Progress
 
@@ -7,9 +7,6 @@ def index(request):
    tasks = Task.objects.all()
    context = { 'tasks' : tasks }
    return render(request, 'main/index.html', context)
-
-def test(request):
-   return render(request, 'main/test.html')
 
 def addTask(request):
    name = request.GET['taskname']
@@ -43,3 +40,5 @@ def incProgress(request):
 
 def semantic_index(request):
    return render(request, 'main/index-semantic.html')
+
+
