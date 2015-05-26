@@ -12,6 +12,9 @@ class Task(models.Model):
       return len([p for p in Progress.objects.filter(task=self.id) if p.done_this_week()])
    count_progress_this_week = property(_count_progress_this_week)
 
+   def __str__(self):
+       return self.name
+
 class Progress(models.Model):
    task = models.ForeignKey(Task)
    datetime_completed = models.DateTimeField(auto_now_add=True)
