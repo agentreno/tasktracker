@@ -7,8 +7,8 @@
    <link rel="stylesheet" href="{% static "css/jquery-ui.theme.min.css" %}">
    <link rel="stylesheet" href="{% static "css/site.css" %}">
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.13/angular.min.js">
-      </script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.13/angular.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.16/angular-route.min.js"></script>
    <script src="{% static "js/ui-bootstrap-custom-tpls-0.13.0.js" %}"></script>
    <script src="{% static "js/bootstrap.min.js" %}"></script>
    <script src="{% static "js/jquery-ui.min.js" %}"></script>
@@ -22,29 +22,8 @@
          data-target="#addtaskmodal">Add New Task</div>
    </div>
 
-{% verbatim %}
-   <div id="taskspace">
-      <div class="row">
-         <div class="col-md-4 col-sm-6" ng-repeat="task in tc.tasklist">
-            <div class="well well-sm {{tc.getType(task.progress, task.weeklyfreq)}}-well">
-               <h3>{{ task.name }}</h3>
-               <p>{{ task.description }}</p>
-               <button class="btn btn-success incbtn" 
-                  ng-click="tc.incTask(task)">Done</button>
-               <button class="btn btn-warning resetbtn" 
-                  ng-click="tc.resetTask(task)">Reset</button>
-               <button class="btn btn-danger deletebtn"
-                  ng-click="tc.deleteTask(task)">Delete Task</button>
-               <p></p>
-               <progressbar class="progress-striped active" value="task.progress"
-                  max="task.weeklyfreq" type="{{tc.getType(task.progress, task.weeklyfreq)}}">
-                  <i>{{(task.progress / task.weeklyfreq) * 100}}%</i>
-               </progressbar>
-            </div>
-         </div>
-      </div>
+   <div ng-view>
    </div>
-{% endverbatim %}
 
    <div class="modal fade" id="addtaskmodal" tabindex="-1" role="dialog"
       aria-labelledby="addtasklabel" aria-hidden="true">
