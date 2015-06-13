@@ -41,4 +41,5 @@ def incProgress(request):
 def semantic_index(request):
    return render(request, 'main/index-semantic.html')
 
-
+def servePartial(request, partialname):
+   return render(request, 'main/partials/' + partialname + '.html')

@@ -14,4 +14,5 @@ urlpatterns = [
    url(r'^incProgress', views.incProgress),
    url(r'^resetProgress', views.resetProgress),
    url(r'^semantic$', views.semantic_index),
+   url(r'^partials/([a-zA-Z]+).html$', views.servePartial)
 ]
