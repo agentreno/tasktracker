@@ -13,23 +13,3 @@ body {
 .success-well {
    background-color: #a6ffb4;
 }
-
-.pagetrans.ng-enter {
-   -webkit-transition: .25s linear all;
-   transition: .25s linear all;
-   opacity: 0;
-}
-
-.pagetrans.ng-enter.pagetrans.ng-enter-active {
-   opacity:1;
-}
-
-.pagetrans.ng-leave {
-   -webkit-transition: .25s linear all;
-   opacity: 1;
-   transition: .25s linear all;
-}
-
-.pagetrans.ng-leave.pagetrans.ng-leave-active {
-   opacity: 0;
-}
