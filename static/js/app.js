@@ -2,7 +2,7 @@
    var app = angular.module('tasks', 
          ['ui.router', 'controllers', 'ui.bootstrap', 'hj.gsapifyRouter']);
    app.config(
-      function($stateProvider, gsapifyRouterProvider) {
+      function($stateProvider, $urlRouterProvider, gsapifyRouterProvider) {
          gsapifyRouterProvider.defaults = {
             enter: 'fadeIn',
             leave: 'fadeOut'
@@ -23,6 +23,8 @@
                opacity: 0,
             }
          });
+
+         $urlRouterProvider.otherwise('/');
          $stateProvider
             .state('dashboard', {
                url: '/',
