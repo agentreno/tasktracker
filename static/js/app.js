@@ -1,29 +1,8 @@
 (function(){
    var app = angular.module('tasks', 
-         ['ui.router', 'controllers', 'ui.bootstrap', 'hj.gsapifyRouter']);
+         ['ui.router', 'controllers', 'ui.bootstrap', 'ngAnimate']);
    app.config(
-      function($stateProvider, $urlRouterProvider, gsapifyRouterProvider) {
-         gsapifyRouterProvider.defaults = {
-            enter: 'fadeIn',
-            leave: 'fadeOut'
-         };
-
-         gsapifyRouterProvider.initialTransitionEnabled = true;
-
-         gsapifyRouterProvider.transition('fadeIn', {
-            duration: 0.5,
-            delay: 1,
-            css: {
-               opacity: 1
-            }
-         });
-         gsapifyRouterProvider.transition('fadeOut', {
-            duration: 0.5,
-            css: {
-               opacity: 0,
-            }
-         });
-
+      function($stateProvider, $urlRouterProvider) {
          $urlRouterProvider.otherwise('/');
          $stateProvider
             .state('dashboard', {
