@@ -4,4 +4,4 @@ TaskTracker
 
 A Django web application to help you track the status of your tasks.
 
-Random message
+Another random message
