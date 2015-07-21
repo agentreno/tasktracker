@@ -17,4 +17,45 @@
             });
       }
    );
+
+   app.controller("SliderController", function($scope){
+      $scope.sliderconfig = {
+         min: 1,
+         max: 10,
+         step: 1
+      }
+
+      $scope.freq = 1;
+
+      $scope.setFreq = function(freq){
+         $scope.freq = freq;
+      }
+   });
+
+   app.directive("slider", function(){
+      return {
+         restrict: 'A',
+         scope: {
+            config: "=config",
+            freq: "=model"
+         },
+         link: function(scope, elem, attrs) {
+            var setModel = function(value){
+               scope.model = value;
+            }
+
+            $(elem).slider({
+               range: false,
+               min: scope.config.min,
+               max: scope.config.max,
+               step: scope.config.step,
+               slide: function(event, ui){
+                  scope.$apply(function(){
+                     scope.freq = ui.value;
+                  });
+               }
+            });
+         }
+      }
+   });
 })();

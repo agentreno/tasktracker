@@ -15,6 +15,9 @@ controllers.controller('TaskController', ['$http', '$scope', function($http, $sc
       }
    };
 
+   $scope.newtask = {};
+   $scope.newtask.freq = 1;
+
    this.addTask = function(task){
       $http.get('/addTask?taskname='+task.name+
             '&taskdesc='+task.desc+

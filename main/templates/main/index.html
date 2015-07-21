@@ -56,17 +56,14 @@
                   <div class="form-group">
                      <label for="taskfreq">
                         Target weekly frequency: 
+                        {% verbatim %}
+                        {{ newtask.freq || 1}}
+                        {% endverbatim %}
                      </label>
-                     <div id="slider" class="slideronly"></div>
-                     <!--<input type="range" value="1" min="1" max="10" id="taskfreq"
-                        name="taskfreq" ng-model="newtask.freq">-->
-                     <script>
-                        $("#slider").slider({
-                           min:1,
-                           max:10,
-                           value:1,
-                        });
-                     </script>
+                     <div ng-controller="SliderController">
+                        <div slider config="sliderconfig" model="$parent.newtask.freq" 
+                           class="slideronly"></div>
+                     </div>
                   </div>
                   <button class="btn btn-default addtaskbtn" data-dismiss="modal"
                      ng-click="tc.addTask(newtask)">Submit</button>
