@@ -6,3 +6,4 @@ A Django web application to help you track the status of your tasks.
 
 Another random message
 Yet another random message
+My third random message
