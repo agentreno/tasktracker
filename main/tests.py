@@ -27,7 +27,7 @@ class ProgressTests(TestCase):
 
    def test_count_progress_for_task_zero_one_and_two(self):
       task = createTestTask()
-      self.assertEqual(task.count_progress_this_week, 0)
+      self.assertEqual(task.count_progress_this_week, 1)
       prog = Progress(task=task)
       prog.save()
       self.assertEqual(task.count_progress_this_week, 1)
