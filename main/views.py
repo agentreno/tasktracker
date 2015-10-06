@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.http import HttpResponse
 from main.models import Task, Progress
 
@@ -40,3 +40,6 @@ def incProgress(request):
 
 def semantic_index(request):
    return render(request, 'main/index-semantic.html')
+
+def servePartial(request, partialname):
+   return render(request, 'main/partials/' + partialname + '.html')

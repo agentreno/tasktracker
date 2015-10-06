@@ -1,0 +1,23 @@
+{% verbatim %}
+<div id="taskspace">
+   <div class="row">
+      <div class="col-md-4 col-sm-6" ng-repeat="task in tc.tasklist">
+         <div class="well well-sm {{tc.getType(task.progress, task.weeklyfreq)}}-well">
+            <h3>{{ task.name }}</h3>
+            <p>{{ task.description }}</p>
+            <button class="btn btn-success incbtn" 
+               ng-click="tc.incTask(task)">Done</button>
+            <button class="btn btn-warning resetbtn" 
+               ng-click="tc.resetTask(task)">Reset</button>
+            <button class="btn btn-danger deletebtn"
+               ng-click="tc.deleteTask(task)">Delete Task</button>
+            <p></p>
+            <progressbar class="progress-striped active" value="task.progress"
+               max="task.weeklyfreq" type="{{tc.getType(task.progress, task.weeklyfreq)}}">
+               <i>{{(task.progress / task.weeklyfreq) * 100}}%</i>
+            </progressbar>
+         </div>
+      </div>
+   </div>
+</div>
+{% endverbatim %}
