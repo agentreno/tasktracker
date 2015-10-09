@@ -1,2 +1,7 @@
-Django==1.8.1
+Django
 gunicorn
+dj-static
+dj-database-url
+psycopg2
+static
+wsgiref
