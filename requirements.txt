@@ -2,3 +2,6 @@ dj-database-url
 django-tastypie
 Django==1.8.1
 gunicorn
+psycopg2
+static
+wsgiref
