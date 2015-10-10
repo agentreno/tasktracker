@@ -1,4 +1,5 @@
 dj-database-url
+dj-static
 django-tastypie
 Django==1.8.1
 gunicorn
